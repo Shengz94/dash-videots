@@ -4,7 +4,8 @@
   "description": "Video player library developed with Typescript and using the DashJS library",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,8 @@
   "homepage": "https://github.com/Shengz94/dash-videots#readme",
   "dependencies": {
     "dashjs": "^3.2.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.2.2"
   }
 }

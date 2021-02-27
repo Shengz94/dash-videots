@@ -3,7 +3,7 @@
       "target": "ES2015",
       "module": "commonjs",
       "declaration": true,
-      "outDir": "dist",
+      "outDir": "lib",
       "rootDir": "src",
       "strict": true,
       "removeComments": true,
@@ -12,5 +12,6 @@
     },
     "include": [
       "src/**/*"
-    ]
+    ],
+    "exclude": ["node_modules"]
   }
