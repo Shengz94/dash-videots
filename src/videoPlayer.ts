@@ -2,7 +2,6 @@ import dashjs from 'dashjs';
 
 class videoPlayer{
     private player: dashjs.MediaPlayerClass;
-    private videoElement?: HTMLElement;
 
     constructor(){
         this.player = dashjs.MediaPlayer().create();
@@ -11,13 +10,12 @@ class videoPlayer{
     setContainer(divId: string){
         let container = document.getElementById(divId);
         if(container != null){
-            this.videoElement = document.createElement("VIDEO");
-            this.videoElement.setAttribute("controls", "true");
-            this.videoElement.setAttribute("style", "width:640px") ////////
-            container.appendChild(this.videoElement);
+            let videoElement = document.createElement("VIDEO");
+            videoElement.setAttribute("controls", "true");
+            container.appendChild(videoElement);
             this.player.initialize();
             this.player.setAutoPlay(false);
-            this.player.attachView(this.videoElement);
+            this.player.attachView(videoElement);
         }
         else{
             throw new Error("Container #" + divId + " not found.");
@@ -34,12 +32,18 @@ class videoPlayer{
                 this.player.play();
             }
         }
+        else{
+            throw new Error("Player has not attached the View or the source.");
+        }
     }
     pause(){
         if(this.player.isReady()){
             if(!this.player.isPaused()){
                 this.player.pause();
             }
+        }
+        else{
+            throw new Error("Player has not attached the View or the source.");
         }
     }
     seek(at:number) {
@@ -52,19 +56,60 @@ class videoPlayer{
                 this.player.seek(duration);
             }
         }
+        else{
+            throw new Error("Player has not attached the View or the source.");
+        }
     }
     stop(){
         if(this.player.isReady()){
             this.player.attachSource(this.player.getSource());
             this.player.pause();
         }
+        else{
+            throw new Error("Player has not attached the View or the source.");
+        }
     }
     destroy(){
         if(this.player.isReady()){
+            this.player.getVideoElement().remove();
             this.player.reset();
-            if(this.videoElement != null){
-                this.videoElement.remove();
+        }
+        else{
+            throw new Error("Player has not attached the View or the source.");
+        }
+    }
+    getDuration(): number{
+        if(this.player.isReady()){
+            console.log("duration" + this.player.duration());
+            return this.player.duration();            
+        }
+        else{
+            throw new Error("Player has not attached the View or the source.");
+        }
+    }
+    toggleMute(){
+        if(this.player.isReady()){
+            this.player.setMute(!this.player.isMuted());
+        }
+        else{
+            throw new Error("Player has not attached the View or the source.");
+        }
+    }
+    turnVolumen(direction: string){
+        if(this.player.isReady()){
+            if(direction === "up"){
+                if(this.player.getVolume() < 1){
+                    this.player.setVolume(this.player.getVolume() + 0.1)
+                }
             }
+            else if(direction === "down"){
+                if(this.player.getVolume() > 0){
+                    this.player.setVolume(this.player.getVolume() - 0.1)
+                }
+            }
+        }
+        else{
+            throw new Error("Player has not attached the View or the source.");
         }
     }
 }
