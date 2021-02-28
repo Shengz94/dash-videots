@@ -118,6 +118,11 @@ class videoPlayer{
             throw new Error("Player has not attached the View or the source.");
         }
     }
+    setProtection(protectionData: dashjs.ProtectionDataSet){
+        if(this.player.isReady()){
+            this.player.setProtectionData(protectionData);
+        }
+    }
 }
 
 export default videoPlayer
