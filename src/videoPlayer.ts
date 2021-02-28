@@ -95,16 +95,22 @@ class videoPlayer{
             throw new Error("Player has not attached the View or the source.");
         }
     }
-    turnVolumen(direction: string){
+    turnVolume(direction: string, value: number){
         if(this.player.isReady()){
-            if(direction === "up"){
-                if(this.player.getVolume() < 1){
-                    this.player.setVolume(this.player.getVolume() + 0.1)
+            if(direction === "up" && this.player.getVolume() != 1){
+                if(this.player.getVolume() + value < 1){
+                    this.player.setVolume(this.player.getVolume() + value);
+                }
+                else if(this.player.getVolume() + value >= 1 ){
+                    this.player.setVolume(1);
                 }
             }
-            else if(direction === "down"){
-                if(this.player.getVolume() > 0){
-                    this.player.setVolume(this.player.getVolume() - 0.1)
+            else if(direction === "down" && this.player.getVolume() != 0){
+                if(this.player.getVolume() - value > 0){
+                    this.player.setVolume(this.player.getVolume() - value);
+                }
+                else if(this.player.getVolume() - value <= 0){
+                    this.player.setVolume(0);
                 }
             }
         }
