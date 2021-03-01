@@ -1,5 +1,5 @@
 import dashjs from 'dashjs';
-declare class videoPlayer {
+export declare class videoPlayer {
     private player;
     constructor();
     setContainer(divId: string): void;
@@ -14,4 +14,3 @@ declare class videoPlayer {
     turnVolume(direction: string, value: number): void;
     setProtection(protectionData: dashjs.ProtectionDataSet): void;
 }
-export default videoPlayer;

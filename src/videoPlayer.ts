@@ -1,6 +1,6 @@
 import dashjs from 'dashjs';
 
-class videoPlayer{
+export class videoPlayer{
     private player: dashjs.MediaPlayerClass;
 
     /**
@@ -199,5 +199,3 @@ class videoPlayer{
         }
     }
 }
-
-export default videoPlayer

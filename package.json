@@ -1,34 +1,33 @@
 {
-  "name": "dash-videots",
+  "name": "dashvideots",
   "version": "1.0.0",
   "description": "Video player library developed with Typescript and using the DashJS library",
-  "main": "index.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "compile": "tsc",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Shengz94/dash-videots.git"
+    "url": "git+https://github.com/Shengz94/dashvideots.git"
   },
   "keywords": [
     "dashjs",
     "video",
-    "player"
+    "player",
+    "library"
   ],
   "author": "Sheng Zhu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Shengz94/dash-videots/issues"
+    "url": "https://github.com/Shengz94/dashvideots/issues"
   },
-  "homepage": "https://github.com/Shengz94/dash-videots#readme",
+  "homepage": "https://github.com/Shengz94/dashvideots#readme",
   "dependencies": {
     "dashjs": "^3.2.1"
   },
   "devDependencies": {
-    "stream": "^0.0.2",
-    "typescript": "^4.2.2",
-    "webpack": "^5.24.2",
-    "webpack-cli": "^4.5.0"
+    "typescript": "^4.2.2"
   }
 }
